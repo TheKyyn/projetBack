@@ -1,15 +1,14 @@
 <?php
 require_once 'functions.php';
 
-// Vérifier si l'utilisateur est déjà connecté
+// check si le user est déjà connecté
 session_start();
 if (isset($_SESSION['user_id'])) {
-    // Rediriger vers la page d'accueil ou une autre page appropriée
     header('Location: index.php');
     exit;
 }
 
-// Traitement du formulaire de connexion
+// formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -18,15 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = login($username, $password);
     
     if ($user) {
-        // Authentification réussie
+        // si l'auth a été faite avec succès
         session_start();
         $_SESSION['user_id'] = $user['id'];
         
-        // Rediriger vers la page d'accueil ou une autre page appropriée
+        // redirige vers la page d'accueil (ou autre page appropriée)
         header('Location: index.php');
         exit;
     } else {
-        // Afficher un message d'erreur
+        // sinon, erreur
         echo "Identifiants invalides.";
     }
 }
