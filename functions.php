@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-// Inscription de l'utilisateur
+// inscription de l'utilisateur
 function registerUser($username, $password) {
     global $pdo;
     
@@ -18,7 +18,7 @@ function registerUser($username, $password) {
     }
 }
 
-// Verif des infos au moment du login
+// verif des infos au moment du login
 function login($username, $password) {
     global $pdo;
     
@@ -29,10 +29,10 @@ function login($username, $password) {
         $user = $stmt->fetch();
         
         if ($user && password_verify($password, $user['password'])) {
-            // Si info valides
+            // si info valides
             return $user;
         } else {
-            // Si info invalides
+            // si info invalides
             return false;
         }
     } catch (PDOException $e) {
@@ -41,7 +41,7 @@ function login($username, $password) {
     }
 }
 
-// On vérifie ici si l'utilisateur est admin
+// on vérifie ici si l'utilisateur est admin
 function isAdmin($userId) {
     global $pdo;
     
