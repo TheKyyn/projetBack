@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost'; // Adresse de l'hôte de la base de données
-$dbName = 'blog'; // Nom de la base de données
-$user = 'root'; // Nom d'utilisateur de la base de données
-$password = 'Shankssangdelaveine'; // Mot de passe de la base de données
+$host = 'localhost'; 
+$dbName = 'blog'; // nom de la base de données
+$user = 'root'; // login de la base de données
+$password = 'myPassword'; // mdp
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);

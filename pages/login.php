@@ -4,7 +4,7 @@ require_once 'functions.php';
 // check si le user est déjà connecté
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: index.php'); // index à faire !!!!
     exit;
 }
 
