@@ -1,8 +1,22 @@
-<?php
+<?php require_once 'config.php'; 
 
 $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
-$stmt = $pdo->query("SHOW TABLES;");
-var_dump($stmt->fetch());
+?>
 
-header('Location: login.php');
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon Blog</title>
+</head>
+<body>
+    <h1>Bienvenue sur mon blog</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="login.php">Se connecter</a></li>
+            <li><a href="register.php">S'inscrire</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
