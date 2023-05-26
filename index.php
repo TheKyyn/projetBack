@@ -4,3 +4,5 @@ $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV
 
 $stmt = $pdo->query("SHOW TABLES;");
 var_dump($stmt->fetch());
+
+header('Location: login.php');
