@@ -1,4 +1,4 @@
-<?php require_once 'config.php'; 
+<?php
 
 $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
@@ -14,8 +14,8 @@ $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV
     
     <nav>
         <ul>
-            <li><a href="login.php">Se connecter</a></li>
-            <li><a href="register.php">S'inscrire</a></li>
+            <li><a href="pages/login.php">Se connecter</a></li>
+            <li><a href="pages/register.php">S'inscrire</a></li>
         </ul>
     </nav>
 </body>

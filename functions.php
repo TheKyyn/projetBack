@@ -1,5 +1,4 @@
 <?php
-require_once 'config.php';
 
 // Inscription de l'utilisateur
 function registerUser($username, $password) {
@@ -57,5 +56,81 @@ function isAdmin($userId) {
         return false;
     }
 }
+
+// Récupérer tous les posts
+function getPosts() {
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM Post");
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération des posts : " . $e->getMessage();
+        return false;
+    }
+}
+
+// Post via son ID
+function getPost($id) {
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM Post WHERE id = ?");
+        $stmt->execute([$id]);
+
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération du post : " . $e->getMessage();
+        return false;
+    }
+}
+
+// Nouveau post
+function createPost($title, $content, $userId) {
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("INSERT INTO Post (title, content, userId) VALUES (?, ?, ?)");
+        $stmt->execute([$title, $content, $userId]);
+
+        return true;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la création du post : " . $e->getMessage();
+        return false;
+    }
+}
+
+// modifier un post
+function updatePost($id, $title, $content, $userId) {
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("UPDATE Post SET title = ?, content = ? WHERE id = ? AND userId = ?");
+        $stmt->execute([$title, $content, $id, $userId]);
+
+        return true;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la modification du post : " . $e->getMessage();
+        return false;
+    }
+}
+
+// suppr un post
+function deletePost($id, $userId) {
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("DELETE FROM Post WHERE id = ? AND userId = ?");
+        $stmt->execute([$id, $userId]);
+
+        return true;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la suppression du post : " . $e->getMessage();
+        return false;
+    }
+}
+
 
 ?>
