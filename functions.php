@@ -1,6 +1,6 @@
 <?php
 
-// Inscription de l'utilisateur
+
 function registerUser($username, $password) {
     global $pdo;
 
@@ -40,7 +40,7 @@ function login($username, $password) {
     }
 }
 
-// On vérifie ici si l'utilisateur est admin
+
 function isAdmin($userId) {
     global $pdo;
 
@@ -57,7 +57,7 @@ function isAdmin($userId) {
     }
 }
 
-// Récupérer tous les posts
+// récup les posts déjà faits
 function getPosts() {
     global $pdo;
 
@@ -72,7 +72,7 @@ function getPosts() {
     }
 }
 
-// Post via son ID
+
 function getPost($id) {
     global $pdo;
 
@@ -87,7 +87,7 @@ function getPost($id) {
     }
 }
 
-// Nouveau post
+
 function createPost($title, $content, $userId) {
     global $pdo;
 
@@ -131,6 +131,7 @@ function deletePost($id, $userId) {
         return false;
     }
 }
+
 
 
 ?>

@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    // fonction pour inscrire un nouvel utilisateur
+    
     if (registerUser($username, $password)) {
         // si l'inscription a été faite avec succès
         header('Location: ./register-success.php');

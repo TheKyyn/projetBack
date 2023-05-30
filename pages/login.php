@@ -1,10 +1,10 @@
 <?php
 require_once 'functions.php';
 
-// check si le user est déjà connecté
+
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: ../index.php'); // index à faire !!!!
+    header('Location: ../index.php'); 
     exit;
 }
 
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    // Appeler la fonction de connexion pour vérifier les informations
+    
     $user = login($username, $password);
     
     if ($user) {
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         $_SESSION['user_id'] = $user['id'];
         
-        // redirige vers la page d'accueil (ou autre page appropriée)
+        
         header('Location: ../index.php');
         exit;
     } else {
