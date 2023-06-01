@@ -8,8 +8,8 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-// formulaire de connexion
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { // formulaire de connexion
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -18,11 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($user) {
         // si l'auth a été faite avec succès
-        session_start();
+        
         $_SESSION['user_id'] = $user['id'];
-        
-        
-        header('Location: ../index.php');
+        header('Location: ./posts.php');
         exit;
     } else {
         // sinon, erreur

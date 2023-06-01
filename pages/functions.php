@@ -2,7 +2,7 @@
 
 
 function registerUser($username, $password) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -19,7 +19,7 @@ function registerUser($username, $password) {
 
 // Verif des infos au moment du login
 function login($username, $password) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("SELECT * FROM User WHERE username = ?");
@@ -42,7 +42,7 @@ function login($username, $password) {
 
 
 function isAdmin($userId) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("SELECT isAdmin FROM User WHERE id = ?");
@@ -59,7 +59,7 @@ function isAdmin($userId) {
 
 // récup les posts déjà faits
 function getPosts() {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("SELECT * FROM Post");
@@ -74,7 +74,7 @@ function getPosts() {
 
 
 function getPost($id) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("SELECT * FROM Post WHERE id = ?");
@@ -89,7 +89,7 @@ function getPost($id) {
 
 
 function createPost($title, $content, $userId) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("INSERT INTO Post (title, content, userId) VALUES (?, ?, ?)");
@@ -104,7 +104,7 @@ function createPost($title, $content, $userId) {
 
 // modifier un post
 function updatePost($id, $title, $content, $userId) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("UPDATE Post SET title = ?, content = ? WHERE id = ? AND userId = ?");
@@ -119,7 +119,7 @@ function updatePost($id, $title, $content, $userId) {
 
 // suppr un post
 function deletePost($id, $userId) {
-    global $pdo;
+    $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV['MYSQL_ROOT_PASSWORD']);
 
     try {
         $stmt = $pdo->prepare("DELETE FROM Post WHERE id = ? AND userId = ?");

@@ -1,17 +1,18 @@
 <?php
 require_once 'functions.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
     
     if (registerUser($username, $password)) {
-        // si l'inscription a été faite avec succès
+        // si l'inscription réussie
         header('Location: ./register-success.php');
         exit;
     } else {
-        // sinon, message d'erreur
+        // sinon erreur
         echo "Erreur lors de l'inscription.";
     }
 }

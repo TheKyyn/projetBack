@@ -7,10 +7,10 @@ $pdo = new PDO("mysql:host=host.docker.internal:3307;dbname=blog", "root", $_ENV
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mon Blog</title>
+    <title>MyBlog</title>
 </head>
 <body>
-    <h1>Bienvenue sur mon blog</h1>
+    <h1>Bienvenue sur MyBlog</h1>
     
     <nav>
         <ul>
